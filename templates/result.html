@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Classification System</title>
+    
+    <link rel="icon" href="{{ url_for('static', filename='imgs/favicon.ico')}}" type="image/x-icon">
+    
+    <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css')}}" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css')}}">
+
+    <script src="{{ url_for('static', filename='assets/js/lottie-player.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js')}}"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.7.1.min.js')}}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+                <span class="fs-4">FCS</span>
+            </a>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="model.html" class="nav-link px-2 link-dark">Models</a></li>
+                <li><a href="/predict" class="nav-link px-2 link-dark">Predict</a></li>
+                <li><a href="about.html" class="nav-link px-2 link-dark">About</a></li>
+            </ul>
+
+            <div class="col-md-3 text-end">
+                <button type="button" class="btn btn-primary">Sign-up</button>
+            </div>
+        </header>
+    </div>
+    <main>
+        <div class="pattern-square predict-sqr"></div>
+        <div class="main-container">
+            <lottie-player src="{{ url_for('static', filename='anim/heart.json')}}" background="transparent" speed="0.2"
+                style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            <div class="main-content result-box-container">
+                <form id="flower-form" class="flower-form">
+                    <h3 class="main-title">Result:</h3>
+                    <div class="result-box">
+                        <h2 id="flower-name" class="text-center success">{{text}}</h2>
+                        <img id="flower-image" src={{image_name}} alt="flower" />
+                    </div>
+                    
+                    <hr>
+                    <p class="main-description">Want to know more? Click the button below.
+                    </p>
+                    <div class="main-actions-btns">
+                        <button id="predict" class="btn btn-success use-btn">Medical Use</button>
+                        <button id="predict" class="btn btn-warning use-btn">Cultural Significance</button>
+                        <button id="predict" class="btn btn-danger use-btn">Interesting Facts</button>
+                        <button id="predict" class="btn btn-primary use-btn">Back to Home</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+
+    <footer class="footer text-center bg-light">
+        © Copyright <span id="demo"></span> <span class="brand">FCS. </span> All Rights Reserved.
+        <script>
+            date = new Date();
+            document.getElementById("demo").innerHTML = date.getFullYear();
+        </script>
+    </footer>
+    <script src="{{ url_for('static', filename='assets/js/script.js')}}"></script>
+</body>
+
+</html>
